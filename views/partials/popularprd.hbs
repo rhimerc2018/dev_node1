@@ -1,0 +1,21 @@
+{{#if  sidebar.popularprd}}
+<div class="card mb-2">
+    <div class="card-header bg-dark text-white">
+        <h5><i class="far fa-fire"></i> Más populares</h5>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            {{#each sidebar.popularprd}}
+<!-- image_id : {{image_id}}
+uniqueProd : {{uniqueProd}}
+filename : {{filename}} -->
+                <div class="col-md-4">
+                    <a href="/products/{{uniqueProd}}/{{image_id}}">                   
+                        <img src="/public/upload/{{filename}}" class="w-100 h-100 image-thumbnail">
+                    </a>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</div>
+{{/if}}

@@ -1,0 +1,117 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+  <div class="container">
+     <div class="col-md-4">
+       <div class="form-group">
+            <div class="container">
+            <a align="left"> 
+	      	<img src="/public/img/santiago_logo_1.jpg" alt=""  height="170px" width="170px" class="img-thumbnail">               
+            </a>
+            </div>
+       </div>
+     </div>
+  <a class="navbar-brand" href="/">Somos Regemac</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav mr-auto ml-auto">
+      {{#if user}}
+      
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Ventas
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/links_Base/lista_cliente">Clientes</a>          
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/links_Base/add_cotiza">Crear Cotización</a> 
+          <div class="dropdown-divider"></div> 
+          <a class="dropdown-item" href="/links_Base/lista_cotiza">Ver Cotizaciones</a> 
+          <div class="dropdown-divider"></div> 
+          <a class="dropdown-item" href="/links_Base/add_proy_cli">Proyectos</a>                   
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/links_Base/ver_guia">Guias</a>                   
+        </div>
+      </li>
+<!--      <li class="nav-item .dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Móviles
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/links_Base/lista_movil">Seleccionar Móvil</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/links_Base/ver_movil">Ver Moviles</a>
+          <div class="dropdown-divider"></div>          
+          <a class="dropdown-item" href="/links_Base/detalle_movil">Agregar Móvil</a>
+         <div class="dropdown-divider"></div>
+         <a class="dropdown-item" href="/links_Base/add_docs">Agregar Documentos</a>
+         <div class="dropdown-divider"></div>
+         <a class="dropdown-item" href="/links_Base/edit_docs">Actualizar Documentos</a>                                    
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Conductores
+        </a>
+        
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/links_Base/lista_conductor">Ver Conductores</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/links_Base/add_cond">Agregar Conductor</a>                   
+        </div>
+      </li>  
+-->   
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Transporte
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/links_Base/ver_movil">Móvil</a>          
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/links_Base/lista_conductor">Conductor</a> 
+        </div>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Parámetros
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/links_Base/add_parametros">Items Cotización</a>          
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/links_Base/lista_conductor">Formatos</a> 
+        </div>
+      </li>
+
+<!--      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          RRSS
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>  -->
+      <li class="nav-item">
+          <a href="#" class="nav-link">RSS</a>
+      </li>      
+      <li class="nav-item">
+          <a href="/profile" class="nav-link">Profile</a>
+      </li>
+      <li class="nav-item">
+          <a href="/logout" class="nav-link">Logout</a>
+      </li>
+      {{else}}
+        <li class="nav-item">
+          <a href="/signin" class = "nav-link">SignIn</a>
+        </li>
+        <li class="nav-item">
+          <a href="/signup" class="nav-link">SignUp</a>
+        </li>
+      {{/if}}      
+    </ul>
+  </div>
+  </div>
+</nav>

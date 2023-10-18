@@ -1,0 +1,232 @@
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header" style="background-color: #7c7aaa;">
+                <h3 class="card-title  text-white">
+                    <i class="far fa-image"></i> Galeria
+                </h3>
+            </div>
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h4>{{galeria.title}}</h4>
+                <button class="btn btn-danger" id="btn-delgal" data-id="{{galeria.galeriaId}}">
+                    <i class="fa fa-times"></i> Delete
+                </button>
+            </div>
+            <div class="car-body">
+                <div class="col-md-12 card text-center">
+                    <h5>
+                        <p>{{galeria.description}}</p>
+                    </h5>
+                    <img src="/public/upload/home/{{galeria.filename}}" alt="" class="img-fluid">
+                </div>
+            </div>
+            <div class="card-footer d-flex justify-content-between align-items-center">
+                <button class="btn btn-success" id="btn-likegal" data-id="{{galeria.filename}}">
+                    <i class="fas fa-thumbs-up"></i>Like
+                </button>
+                <p>
+                    <span class="likes-count">{{galeria.likes}}</span>
+                    <i class="fas fa-heart"></i>
+                </p>
+                <p>
+                    <i class="fas fa-eye"></i>{{galeria.views}}
+                </p>
+                <p>
+                    <i class="far fa-clock"></i>
+                    {{ tiempocomentario galeria.timestamp }}
+                </p>
+            </div>
+        </div>
+
+        <div class="card mt-2">
+            <div class="card-header text-white" style="background-color: #7c7aaa;">
+                <h3 class="card-title  text-white">
+                    <i class="far fa-images"></i> Empresas
+                </h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    {{#each images as |value key|}}
+                    <div class="col-md-3  w-50 h-50 img-thumbnail" style="font-size: 50% align:center">
+                        <div class="card text center">
+                            <div
+                                class="card-header bg-dark text-white d-flex  justify-content-between align-items-center">
+                                <spam>
+                                    <h6>{{title}}</h6>
+                                </spam>
+                                <h8>L. {{letra}}</h8>
+                            </div>
+                            <a href="/images/{{uniqueId}}">
+                                <img src="/public/upload/negocio/{{filename}}" alt=""
+                                    class=" zoom w-100 h-100 img-thumbnail">
+                            </a>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+        <div class="card mt-2">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3>Agregar Empresa</h3>
+                <button class="btn btn-info" id="btn-toggle-comment">
+                    <i class="fa fa-comment-o"></i>Agrega una Empresa   
+                </button>
+            </div>
+            <div class="card-body">
+                <blockquote id="post-comment">
+                    <form action="/galerias/{{galeria.galeriaId}}/image" enctype="multipart/form-data" method="POST">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input type="file" name="image" class="custom-file-input" id="inputGroup"
+                                        aria-describedby="inputGroupFileAddon" required>
+                                    <label class="custom-file-label" for="inputGroupFile">Ingresar Imagen de
+                                        Empresa</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="title" placeholder="Nombre de Empresa">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="street" placeholder="Calle Ubicación">
+                        </div>
+                        <div class="row col-md-12">
+                            <div class="form-group">
+                                <input type="number" class="form-control" name="number" placeholder="Número">
+                            </div>
+                            <div class="form-group">
+                                <input type="number" class="form-control" name="local" placeholder="Local">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="letra" placeholder="Letra">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="description" placeholder="Descripción">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success" id="btn-comment">
+                                <i class="fa fa-comment"></i>Guardar Empresa
+                            </button>
+                        </div>
+                    </form>
+                </blockquote>
+                <ul class="list-group p-4">
+                    <li class="list-group-item">
+                        <div class="row">
+                            <blockquote class="col">
+                                <p class="lead">{{comment}}</p>
+                                <footer class="blockquote-footer">
+                                    {{comment.name}} - {{ tiempocomentario timestamp }}
+                                </footer>
+                            </blockquote>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="card mt-2">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3>Comentarios</h3>
+                <button class="btn btn-info" id="btn-toggle-comment">
+                    <i class="fa fa-comment-o"></i>Publica un Comentario
+                </button>
+            </div>
+            <div class="card-body">
+                <blockquote id="post-comment">
+                    <form action="/galerias/{{galeria.galeriaId}}" method="POST">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="name" placeholder="Nombre Comentarista">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="email" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="comment" rows="2" class="form-control"
+                                placeholder="Tu Comentario"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success" id="btn-comment">
+                                <i class="fa fa-comment"></i>Publicar
+                            </button>
+                        </div>
+                    </form>
+                </blockquote>
+                <ul class="list-group p-4">
+                    <li class="list-group-item">
+                        <div class="row">
+                            <a href="#" class="col text-center">
+                                <img src="http://gravatar.com/avatar/{{gravatar}}?d=monsterid&s=45" alt="">
+                            </a>
+                            <blockquote class="col">
+                                <p class="lead">{{comment}}</p>
+                                <footer class="blockquote-footer">
+                                    {{comment.name}} - {{ tiempocomentario timestamp }}
+                                </footer>
+                            </blockquote>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card mb-2">
+            <div class="card-header bg-dark text-white">
+                <h5><i class="far fa-chart-bar"></i>Galeria</h5>
+            </div>
+            <div class="card-body">
+                <p><i class="fas fa-eye"></i> Visitas : {{sidebargall.views}}</p>
+                <p><i class="fas fa-heart"></i> Likes : {{sidebargall.likes}}</p>
+                <p><i class="fas fa-comments"></i> Comentarios : {{sidebargall.totalcommgal}}</p>
+            </div>
+        </div>
+        <div class="card mb-2">
+            <div class="card-header bg-dark text-white">
+                <h5><i class="far fa-chart-bar"></i>Empresas</h5>
+            </div>
+            <div class="card-body">
+                <p><i class="fas fa-images"></i> Empresas : {{sidebargall.totalimg}}</p>
+            </div>
+        </div>
+        <div class="card mb-2">
+            <div class="card-header bg-dark text-white">
+                <h5><i class="far fa-fire"></i> Más Populares</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    {{#each sidebargall.popular}}
+                    <div class="col-md-3  w-50 h-50 img-thumbnail" style="font-size: 50% align:center">
+                        <a href="/images/{{uniqueId}}">
+                            <img src="/public/upload/negocio/{{filename}}" class=" zoom w-100 h-100 image-thumbnail">
+                        </a>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+        <div class="card mt-2">
+            <div class="card-header bg-dark text-white">
+                <h5><i class="fas fa-comments"></i>Comentarios</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        {{#each sidebargall.commentsgal}}
+                        <blockquote class="w-100">
+                            <p>{{comment}}</p>
+                            <footer class="blockquote-footer">
+                                <span>{{name}}</span>
+                                <!--                                    <span>{{ comment.timestamp}}</span>
+-->
+                            </footer>
+                        </blockquote>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,16 +1,23 @@
+{{#if sidebar.popular}}
 <div class="card mb-2">
     <div class="card-header bg-dark text-white">
-        <h5><i class="far fa-fire"></i> Mas Populares</h5>
+        <h5><i class="far fa-fire"></i> Negocios Populares</h5>
     </div>
     <div class="card-body">
         <div class="row">
             {{#each sidebar.popular}}
+<!-- uniqueId : {{uniqueId}}
+filename : {{filename}}      -->        
                 <div class="col-md-4">
+                                    <div class="card text center">
+                    <div class="card-header bg-dark text-white d-flex  justify-content-between align-items-center">
                     <a href="/images/{{uniqueId}}">
                         <img src="/public/upload/{{filename}}" class="w-100 h-100 image-thumbnail">
                     </a>
+                    </div>
                 </div>
             {{/each}}
         </div>
     </div>
 </div>
+{{/if}}

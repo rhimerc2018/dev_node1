@@ -1,0 +1,61 @@
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header" style="background-color: #7c7aaa;">
+                <h3 class="card-title  text-white">
+                    <i class="far fa-image"></i>Tipos de Producto
+                </h3>
+            </div>
+            <div class="card-body">
+                <form action="/typeprod" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" name="image" class="custom-file-input" id="inputGroup"
+                                    aria-describedby="inputGroupFileAddon" required>
+                                <label class="custom-file-label" for="inputGroupFile">Seleccione Imagen de
+                                    Tipo de Producto</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="name" class="form-control" placeholder="Título para la imagen"
+                            required>
+
+                    </div>
+                    <div class="form-group">
+                        <textarea name="description" rows="2" class="form-control"
+                            placeholder="Descripción del tipo de producto" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-success">
+                            <i class="fa fa-upload"></i> Guardar Tipo 
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+<!--         <div class="card mt-2">
+            <div class="card-header text-white" style="background-color: #7c7aaa;">
+                <h3 class="card-title  text-white">
+                    <i class="far fa-images"></i> Tipos de Productos
+                </h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    {{#each galeries.galerias as |value key|}}
+                    <div class="col-md-4">
+                        <div class="card text center">
+                            <div
+                                class="card-header bg-dark text-white d-flex  justify-content-between align-items-center">
+                                {{title}}
+                            </div>
+                            <a href="/galerias/{{galeriaId}}">
+                                <img src="/public/upload/{{filename}}" alt="" class="w-100 h-100 img-thumbnail">
+                            </a>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div> -->
+    </div>

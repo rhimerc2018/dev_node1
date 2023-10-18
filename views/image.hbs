@@ -1,82 +1,359 @@
-<div class="card">
-    <div class="card-header d-flex justify-content-between aling-items-center">
-        <h2>{{title}}</h2>
-        <button class="btn btn-danger" id="btn-delete" data-id="0hdhh6e">
-            <i class="fa fa-times"></i> Delete
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header" style="background-color: #7c7aaa;">
+                <h3 class="card-title  text-white">
+                    <i class="far fa-image"></i> Empresa
+                </h3>
+            </div>
+            image.uniqueId : {{image.uniqueId}}
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h4>{{image.title}}</h4>
+                <button class="btn btn-danger" id="btn-delete" data-id="{{image.uniqueId}}">
+                    <i class="fa fa-times"></i> Delete
+                </button>
 
-        </button>
-    </div>
-    <div class="car-body">
-        <p>{{description}}</p>   
-        <div class="text-center">
-            <img src="/public/upload/{{filename}}" alt="" class="img-fluid">
+            </div>
+            <div class="car-body">
+                <div class="text-center">
+                    <h5>
+                        <p>{{image.description}}</p>
+                    </h5>
+                    <img src="/public/upload/negocio/{{image.filename}}" alt="" class="img-fluid">
+                </div>
+            </div>
+            <div class="card-footer d-flex justify-content-between align-items-center">
+                <button class="btn btn-success" id="btn-likeimg" data-id="{{image.filename}}">
+                    <i class="fas fa-thumbs-up"></i>Like
+                </button>
+                <p>
+                    <span class="likes-count">{{image.likes}}</span>
+                    <i class="fas fa-heart"></i>
+                </p>
+                <p>
+                    <i class="fas fa-eye"></i>{{image.views}}
+                </p>
+                <p>
+                    <i class="far fa-clock"></i>
+                    {{ tiempocomentario image.timestamp }}
+                </p>
+            </div>
+        </div>
+        <div class="card mt-2">
+            <div class="card-header text-white" style="background-color: #7c7aaa;">
+                <h3 class="card-title  text-white">
+                    <i class="far fa-images"></i> Productos
+                </h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    {{#each products as |value key|}}
+                    <div class="col-md-4">
+
+                        <div class="card text center">
+                            <div
+                                class="card-header bg-dark text-white d-flex  justify-content-between align-items-center">
+                                {{name}}
+                            </div>
+                            filename : {{filename}}
+                            <a href="/products/{{uniqueProd}}/{{image_id}}">
+                                <img src="/public/upload/product/{{filename}}" alt="" class="w-100 h-100 img-thumbnail">
+                            </a>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+        <div class="card mt-2">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3>Tipos de Productos</h3>
+                <button class="btn btn-info" id="btn-toggle-comment">
+                    <i class="fa fa-comment-o"></i>Agrega nuevo tipo de Producto
+                </button>
+            </div>
+            <div class="card-body">
+                <blockquote id="post-comment">
+                    <form action="/typeprod" method="POST" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input type="file" name="image" class="custom-file-input" id="inputGroup"
+                                        aria-describedby="inputGroupFileAddon" required>
+                                    <label class="custom-file-label" for="inputGroupFile">Seleccione Imagen de
+                                        Tipo de Producto</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="name" class="form-control" placeholder="Nombre de tipo de producto"
+                                required>
+
+                        </div>
+                        <div class="form-group">
+                            <textarea name="description" rows="2" class="form-control" placeholder="Descripción "
+                                required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success">
+                                <i class="fa fa-upload"></i> Guardar Tipo
+                            </button>
+                        </div>
+                    </form>
+                </blockquote>
+            </div>
+        </div>
+        <div class="card mt-2">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3>Tipos de Productos</h3>
+                <button class="btn btn-info" id="btn-toggle-comment">
+                    <i class="fa fa-comment-o"></i>Tipo de Producto
+                </button>
+            </div>
+            <div class="card-body">
+                <blockquote id="post-comment">
+                    <form action="/typeprod" method="POST" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input type="file" name="image" class="custom-file-input" id="inputGroup"
+                                        aria-describedby="inputGroupFileAddon" required>
+                                    <label class="custom-file-label" for="inputGroupFile">Seleccione Imagen de
+                                        Tipo de Producto</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="name" class="form-control" placeholder="Nombre de tipo de producto"
+                                required>
+
+                        </div>
+                        <div class="form-group">
+                            <textarea name="description" rows="2" class="form-control" placeholder="Descripción "
+                                required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success">
+                                <i class="fa fa-upload"></i> Guardar Tipo
+                            </button>
+                        </div>
+                    </form>
+                </blockquote>
+            </div>
+        </div>
+        <div class="card mt-2">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3>Productos</h3>
+                <button class="btn btn-info" id="btn-toggle-comment">
+                    <i class="fa fa-comment-o"></i>Agrega un Producto
+                </button>
+            </div>
+            <div class="card-body">
+                <blockquote id="post-comment">
+                    <form action="/images/{{image.uniqueId}}/product" enctype="multipart/form-data" method="POST">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input type="file" name="image" class="custom-file-input" id="inputGroup"
+                                        aria-describedby="inputGroupFileAddon" required>
+                                    <label class="custom-file-label" for="inputGroupFile">Seleccione Imagen de
+                                        Producto</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="name" placeholder="Nombre de Producto">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="product" placeholder="Descripción ">
+                        </div>
+                        <div class="form-group">
+                            <input type="int" class="form-control" name="precio" placeholder="Precio ">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success" id="btn-comment">
+                                <i class="fa fa-comment"></i>Guardar Producto
+                            </button>
+                        </div>
+                    </form>
+                </blockquote>
+                <ul class="list-group p-4">
+                    <li class="list-group-item">
+                        <div class="row">
+                            <blockquote class="col">
+                                <p class="lead">{{comment}}</p>
+                                <footer class="blockquote-footer">
+                                    {{comment.name}} - {{ tiempocomentario timestamp }}
+                                </footer>
+                            </blockquote>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card mt-2">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3>Recomendar</h3>
+                <button class="btn btn-info" id="btn-toggle-comment">
+                    <i class="fa fa-comment-o"></i>Agrega recomendación
+                </button>
+            </div>
+            <div class="card-body">
+                <blockquote id="post-comment">
+                    <form action="/images/{{image.uniqueId}}/recomienda" enctype="multipart/form-data" method="POST">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <a>
+                                    <h6>Negocio</h6>
+                                    <for="negocio">
+                                        <select id="recomimg_id" name="recomimg_id" type="text">
+                                            {{#each totalimagesrcmd}}
+                                            <option value={{_id}} selected>{{title}}
+                                                {{/each}}</option>
+                                        </select>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success" id="btn-comment">
+                                <i class="fa fa-comment"></i>Guardar Recomendado
+                            </button>
+                        </div>
+                    </form>
+                </blockquote>
+                <ul class="list-group p-4">
+                    <li class="list-group-item">
+                        <div class="row">
+                            <blockquote class="col">
+                                <p class="lead">{{comment}}</p>
+                                <footer class="blockquote-footer">
+                                    {{comment.name}} - {{ tiempocomentario timestamp }}
+                                </footer>
+                            </blockquote>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card mt-2">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3>Comentarios</h3>
+                <button class="btn btn-info" id="btn-toggle-comment">
+                    <i class="fa fa-comment-o"></i>Publica un Comentario
+                </button>
+            </div>
+            <div class="card-body">
+                <blockquote id="post-comment">
+                    <form action="/images/{{image.uniqueId}}/comment" method="POST">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="name" placeholder="Nombre Comentarista">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="email" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="comment" rows="2" class="form-control"
+                                placeholder="Tu Comentario"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success" id="btn-comment">
+                                <i class="fa fa-comment"></i>Publicar
+                            </button>
+                        </div>
+                    </form>
+                </blockquote>
+                <ul class="list-group p-4">
+                    <li class="list-group-item">
+                        <div class="row">
+                            <a href="#" class="col text-center">
+                                <img src="http://gravatar.com/avatar/{{gravatar}}?d=monsterid&s=45" alt="">
+                            </a>
+                            <blockquote class="col">
+                                <p class="lead">{{comment}}</p>
+                                <footer class="blockquote-footer">
+                                    {{comment.name}} - {{ tiempocomentario timestamp }}
+                                </footer>
+                            </blockquote>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
-    <div class="card-footer d-flex justify-content-between align-item-center">
-        <button class="btn btn-success" id="btn-like" data-id="{{filename}}">
-            <i class="fas fa-thumbs-up"></i>Like
-        </button>
-        <p>
-            <span class="likes-count">{{likes}}</span>
-            
-            <i class="fas fa-heart"></i>
-
-        </p>
-        <p>
-            <i class="fas fa-eye"></i>{{views}}
-        </p>        
-        <p>
-            <i class="far fa-clock"></i>
-            {{ tiempocomentario images.timestamp }}
-        </p>
-
-    </div>
-</div>
-
-<div class="card mt-2">
-    <div class="card-header d-flex justify-content-between align-items-center">
-        <h3>Comentarios</h3>
-        <button class="btn btn-info" id="btn-toggle-comment">
-            <i class="fa fa-comment-o"></i>Publica un Comentario
-        </button>
-    </div>
-    <div class="card-body">
-        <blockquote id="post-comment">
-            <form action="/images/comment" method="POST">
-                <div class="form-group">
-                    <input type="text" class="form-control" name="name" placeholder="Nombre">
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" name="email" placeholder="Email">
-                </div>
-                <div class="form-group">
-                    <textarea name="comment" rows="2" class="form-control" placeholder="Tu Comentario"></textarea>
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-success" id="btn-comment">
-                        <i class="fa fa-comment"></i>Publicar
-                    </button>
-                </div>
-            </form>
-        </blockquote>
-        <ul class="list-group p-4">
-
-            <li class="list-group-item">
+    <div class="col-md-4">
+        <div class="card mb-2">
+            <div class="card-header bg-dark text-white">
+                <h5><i class="far fa-chart-bar"></i>Empresa</h5>
+            </div>
+            <div class="card-body">
+                <!--        <p><i class="fas fa-comments"></i> Productos : {{sidebar.stats.totalprod}}</p> -->
+                <p><i class="fas fa-eye"></i> Vistas : {{sidebarimg.views}}</p>
+                <p><i class="fas fa-heart"></i> Likes : {{sidebarimg.likes}}</p>
+                <p><i class="fas fa-comments"></i> Comentarios : {{sidebarimg.totalcomm}}</p>
+            </div>
+        </div>
+        <div class="card mb-2">
+            <div class="card-header bg-dark text-white">
+                <h5><i class="far fa-chart-bar"></i>Productos</h5>
+            </div>
+            <div class="card-body">
+                <!--        <p><i class="fas fa-images"></i> imagenes : {{sidebarprod.stats.images}}</p> -->
+                <p><i class="fas fa-comments"></i> Productos : {{sidebarimg.totalprod}}</p>
+            </div>
+        </div>
+        <div class="card mb-2">
+            <div class="card-header bg-dark text-white">
+                <h5><i class="far fa-fire"></i> Productos Más Populares</h5>
+            </div>
+            <div class="card-body">
                 <div class="row">
-                    <a href="#" class="col text-center">
-                        <img src="http://gravatar.com/avatar/{{gravatar}}?d=monsterid&s=45" alt="">
-                    </a>
-                    <blockquote class="col">
-                        <p class="lead">{{comment}}</p>
-                        <footer class="blockquote-footer">
-                            {{name}} - {{ tiempocomentario images.timestamp }}
-                        </footer>
-                    </blockquote>
+                    {{#each sidebarimg.popularprd}}
+                    <div class="col-md-4">
+                        <a href="/products/{{uniqueProd}}/{{image_id}}">
+                            <img src="/public/upload/product/{{filename}}" class="w-100 h-100 image-thumbnail">
+                        </a>
+                    </div>
+                    {{/each}}
                 </div>
-            </li>
-
-
-        </ul>
-
+            </div>
+        </div>
+        <div class="card mb-2">
+            <div class="card-header bg-dark text-white">
+                <h5><i class="far fa-fire"></i>Negocios Recomendados</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    {{#each recomimgs}}
+                    <div class="col-md-4">
+                        <a href="/images/{{uniqueId}}">
+                            <img src="/public/upload/negocio/{{filename}}" class="w-100 h-100 image-thumbnail">
+                        </a>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+        <div class="card mt-2">
+            <div class="card-header bg-dark text-white">
+                <h5><i class="fas fa-comments"></i>Comentarios</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        {{#each sidebarimg.commentsimg}}
+                        <blockquote class="w-100">
+                            <p>{{comment}}</p>
+                            <footer class="blockquote-footer">
+                                <span>{{name}}</span>
+                                <!--  <span>{{ comment.timestamp}}</span> -->
+                            </footer>
+                        </blockquote>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
     </div>
 </div>

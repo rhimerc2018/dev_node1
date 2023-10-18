@@ -1,0 +1,93 @@
+<div class="row">
+    <div class="col-md-8">
+         <div class="card">
+            <div class="card-header" style="background-color: #7c7aaa;">
+                <h3 class="card-title  text-white">
+                    <i class="far fa-image"></i>Edificios Santiago Centro
+                </h3>
+            </div>
+            <div class="card-body">
+                <form action="/galerias" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" name="image" class="custom-file-input" id="inputGroup"
+                                    aria-describedby="inputGroupFileAddon" required>
+                                <label class="custom-file-label" for="inputGroupFile">Seleccione Imagen de
+                                    Edificio</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="titulo" class="form-control" placeholder="Nombre de Galería"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="street" class="form-control" placeholder="Calle Ubicación"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="number" class="form-control" placeholder="Número "
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="descripcion" rows="2" class="form-control"
+                            placeholder="Descripción " required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-success">
+                            <i class="fa fa-upload"></i> Guardar Galería
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="card mt-2">
+            <div class="card-header text-white" style="background-color: #7c7aaa;">
+                <h3 class="card-title  text-white">
+                    <i class="far fa-images"></i> Edificios
+                </h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    {{#each galeries.galerias as |value key|}}
+                    <div class="col-md-3  w-50 h-50 img-thumbnail" style="font-size: 50% align:center">
+                        <div class="card text center">  
+                            <div
+                                class="card-header bg-dark text-white d-flex  justify-content-between align-items-center">
+                                {{title}}
+                            </div>
+                            <a href="/galerias/{{galeriaId}}">
+                                <img src="/public/upload/home/{{filename}}" alt="" class=" zoom  img-thumbnail">
+                            </a>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card mb-2">
+            <div class="card-header bg-dark text-white">
+                <h5><i class="far fa-chart-bar"></i>Centros/Oficinas Comerciales</h5>
+            </div>
+            <div class="card-body">
+                <p><i class="fas fa-images"></i> Edificios : {{galeries.sidebarhome.statshome.galleries}}</p>
+                <p><i class="fas fa-eye"></i> Visitas : {{galeries.sidebarhome.totalviews}}</p>
+                <p><i class="fas fa-heart"></i> Likes : {{galeries.sidebarhome.totalikes}}</p>
+            </div>
+        </div>
+        <div class="card mb-2">
+            <div class="card-header bg-dark text-white">
+                <h5><i class="far fa-chart-bar"></i>Empresas</h5>
+            </div>    
+            <div class="card-body">
+                <p><i class="fas fa-images"></i> Empresas : {{galeries.sidebarhome.totalneg}}</p>
+                <p><i class="fas fa-eye"></i> Productos : {{galeries.sidebarhome.totalprod}}</p>
+                <p><i class="fas fa-heart"></i> Comentarios : {{galeries.sidebarhome.totalcomm}}</p>
+            </div>
+        </div>        
+    </div>
+</div>
